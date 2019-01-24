@@ -1,21 +1,3 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-const responses = require('../common/response-builder');
-const temperatureRepo = require('../db/repo/temperatures-repo');
-
-const get = async id => responses.ok(await temperatureRepo.getAll());
-
-const create = async (Temperature) => {
-  return responses.accepted(await temperatureRepo.createOne(Temperature));
-};
-
-
-module.exports = {
-  get, create
-};
-=======
-=======
->>>>>>> Stashed changes
 'use strict';
 
 const TemperatureModel = require('../model/temperatureModel');
@@ -37,7 +19,3 @@ exports.createTemperature = function (req, res) {
     res.json(temperature);
   });
 };
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes

@@ -1,5 +1,4 @@
 const express = require("express");
-const initDB = require('./init/init-db');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 

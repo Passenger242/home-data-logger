@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 const responses = require('../common/response-builder');
 const temperatureRepo = require('../db/repo/temperatures-repo');
 
@@ -13,6 +14,8 @@ module.exports = {
   get, create
 };
 =======
+=======
+>>>>>>> Stashed changes
 'use strict';
 
 const TemperatureModel = require('../model/temperatureModel');
@@ -34,4 +37,7 @@ exports.createTemperature = function (req, res) {
     res.json(temperature);
   });
 };
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

@@ -1,36 +1,24 @@
-const express = require("express");
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-
-const start = async () => {
-
-  const app = express();
-
-  app.use(bodyParser.urlencoded({ extended: true }));
-  app.use(bodyParser.json());
-
-  // DB
-  mongoose.Promise = global.Promise;
-  await initDB.connect();
-
-  const Schema = mongoose.Schema;
-
-  const TempLogSchema = new Schema({
-    sensor: Number,
-    ts: { type: Date, default: Date.now },
-    value: Number
-  });
+var express = require('express'),
+  app = express(),
+  port = process.env.PORT || 8080,
+  mongoose = require('mongoose'),
+  TemperatureModel = require('./model/temperatureModel'), //created model loading here
+  bodyParser = require('body-parser');
+  
+// mongoose instance connection url connection
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost/home-data-logger'); 
 
 
-  var temperatureRoutes = require('./route/temperatureRoute');
-  temperatureRoutes(app);
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-  const port = process.env.PORT || 8080;
 
-  app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
-  });
+var routes = require('./route/temperatureRoute'); //importing route
+routes(app); //register the route
 
-};
 
-start();
+app.listen(port);
+
+
+console.log('RESTful API server started on: ' + port);

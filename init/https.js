@@ -2,11 +2,11 @@ const https = require('https');
 const fs = require('fs');
 
 var options = {
-  key: fs.readFileSync('./config/cert/datalogger-server.key'),
-  cert: fs.readFileSync('./config/cert/datalogger-server.crt'),
-  ca: fs.readFileSync('./config/cert/ca.crt'),
+  key: fs.readFileSync('./config/cert/server-key.pem'),
+  cert: fs.readFileSync('./config/cert/server-crt.pem'),
+  ca: fs.readFileSync('./config/cert/ca-crt.pem'),
   requestCert: true,
-  rejectUnauthorized: false,
+  rejectUnauthorized: true,
 };
 
 module.exports = app => https.createServer(options, app);

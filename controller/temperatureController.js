@@ -5,8 +5,9 @@ const mongoose = require('mongoose');
 
 exports.findAllTemperatures = function (req, res) {
     TemperatureModel.find({}, function (err, result) {
-        if (err)
-            res.send(err);
+        if (err)  {
+          res.send(err);
+        }
         res.json(result);
     });
 };
@@ -14,8 +15,9 @@ exports.findAllTemperatures = function (req, res) {
 exports.createTemperature = function (req, res) {
     var newTemperature = new TemperatureModel(req.body);
     newTemperature.save(function(err, temperature) {
-    if (err)
+    if (err) {
       res.send(err);
+    }
     res.json(temperature);
   });
 };
